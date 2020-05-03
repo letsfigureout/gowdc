@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: gowdc
+    labels:
+        app: gowdc
+spec:
+    replicas: 2
+    selector:
+        matchLabels:
+            app: gowdc
+    template:
+        metadata:
+            labels:
+                app: gowdc
+        spec:
+            containers:
+            - name: gowdc
+              image: repo.treescale.com/letsfigureout/gowdc:latest
+              ports:
+              - containerPort: 8000
+            imagePullSecrets:
+            - name: treescale
